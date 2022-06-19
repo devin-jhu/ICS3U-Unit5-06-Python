@@ -1,22 +1,45 @@
 #!/usr/bin/env python3
 
 # Created by Devin Jhu
-# Created on May 2022
-# The counter
+# Created on June 2022
+# The rounder
+
+
+def rounding(number, round_to):
+    # rounds the users number to their desired decimal place
+
+    rounded_number = 10**round_to
+
+    number[0] = int(number[0] * rounded_number + 0.5) / rounded_number
 
 
 def main():
-    # this program counts
-    counter = 1000
+    # Takes user input, passes it to round function,
+    # then outputs the rounded number
 
-    # process & output
-    for counter in range(1000, 2001):
-        if counter % 5 == 0:
-            print("\n{0} ".format(counter), end=" ")
+    number = []
+
+    print("This program rounds numbers")
+
+    # input
+    number_input = input("Enter number: ")
+    decimal_string = input("Enter decimal points to round to: ")
+
+    # process
+    try:
+        single_number = float(number_input)
+        number.append(single_number)
+        decimal = int(decimal_string)
+
+        if decimal >= 0:
+            rounding(number, decimal)
+            print("\nThe rounded number is {0}".format(number[0]))
         else:
-            print("{0} ".format(counter), end=" ")
+            print("not a number")
 
-    counter = counter + 1
+    except Exception:
+        print("not a number")
+
     print("\nDone.")
 
 
